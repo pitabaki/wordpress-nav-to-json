@@ -36,7 +36,7 @@
             foreach( $main_menu_item_array as $each_main_menu_key => $each_main_menu_item ){
                 //echo "sub_menu_item_array" . json_encode($sub_menu_item_array). "\n\n";
                 $each_menu_item_link_name = $each_main_menu_item -> get_link_name();
-                $each_menu_item_link_value = $each_main_menu_item -> get_link_value();
+                $each_menu_item_link_value = str_replace("anaplan.staging.wpengine","www.anaplan", $each_main_menu_item -> get_link_value());
                 $each_menu_item_object_id = $each_main_menu_item -> get_object_id();
                 $each_menu_item_slug = strtolower(str_replace(" ", "_", $each_menu_item_link_name));
                 $obj = $each_main_menu_item -> get_object();
@@ -60,7 +60,7 @@
                             foreach( $sub_menu_item_array[$each_sub_menu_item_id] as $each_sub_sub_menu_item ) {
                                 $sub_obj = $each_sub_sub_menu_item->get_object();
                                 $each_sub_sub_menu_item_id = $each_sub_sub_menu_item->get_object_id();
-                                $each_sub_sub_menu_item_url = $each_sub_sub_menu_item->get_link_value();
+                                $each_sub_sub_menu_item_url = str_replace("anaplan.staging.wpengine","www.anaplan", $each_sub_sub_menu_item->get_link_value());
                                 $each_sub_sub_menu_item_name = $each_sub_sub_menu_item->get_link_name();
                                 $sub_type = ( strpos($each_sub_sub_menu_item_name, 'img' ) ) ? 'image':'link';
                                 $each_sub_sub_menu_item_string = '{"id": "' . $each_sub_sub_menu_item_id .'", "type": "'.$sub_type.'", "url":"'.$each_sub_sub_menu_item->get_link_value().'", "name":"'. $each_sub_sub_menu_item_name .'"}';

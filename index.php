@@ -21,39 +21,30 @@
 
 	function menu_to_json_test() {
             
-        $menu = wp_get_nav_menu_object( "Test Menu" );
-        
-		$menu_items = wp_get_nav_menu_items($menu->term_id);
-
-		//JSON encoding
-		$json_string = json_encode($menu_items);
-
-		//Determine file directory
-		$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu.json';
-
-		//Print JSON content
-		file_put_contents($file, $json_string);
-			
-	}
-	
-	function menu_to_json() {
-
-		//$menu_echo = get_registered_nav_menus();
-
-		//$menu_echo = get_terms( 'nav_menu' );
 		
-		/*
-		$menus = ["V2 Main Nav"]; //for testing
+		$menus = ["Main Nav"]; //for testing
 		$menu_json_data_string_obj = "[";
 
 		for ( $i=0; $i < count($menus); $i++ ) {
 			$json_string_end = ( $i + 1 === count($menus) ) ? "]}]" : "]},";
 			$menu_json_data_string = nav_menu_process($menus[$i]);
 			$menu_json_data_string_obj .= '{"menu_name":"' . $menus[$i] .'","menu":[' . $menu_json_data_string . $json_string_end;
-		}*/
+		}
+        
+		//$menu_items = wp_get_nav_menu_items($menu->term_id);
 
-		//$menu_echo = get_terms( 'nav_menu' );
-		
+		//JSON encoding
+		//$json_string = json_encode($menu_items);
+
+		//Determine file directory
+		$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu.json';
+
+		//Print JSON content
+		file_put_contents($file, $menu_json_data_string_obj);
+			
+	}
+	
+	function menu_to_json() {
 		
 		$menus = get_terms( 'nav_menu' );
 		$menu_json_data_string_obj = "[";
@@ -63,15 +54,11 @@
 			$menu_json_data_string_obj .= '{"menu_name":"' . $menus[$i]->name .'","menu":[' . $menu_json_data_string . $json_string_end;
 		}
 
-		//JSON encoding
-		//$json_string = json_encode($menu_echo);
-
 		//Determine file directory
 		$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu.json';
 
 		//Print JSON content
 		file_put_contents($file, $menu_json_data_string_obj);
-		//file_put_contents($file, $json_string);
 
 	}
 
