@@ -25,14 +25,16 @@
                     $main_menu_item_array[$current_menu_item_obj->ID] = $menu_item_obj;
                 } else { //sub menu found
                     $menu_item_obj = new Menu_Item($current_menu_item_obj->object, $current_menu_item_obj->object_id, $current_menu_item_obj->title, $current_menu_item_obj->url);
+
                     $sub_menu_item_array[$current_menu_item_obj->menu_item_parent][] = $menu_item_obj;
                 }
 
             }
-            
+
             $menu_item_json_array = array();
 
             foreach( $main_menu_item_array as $each_main_menu_key => $each_main_menu_item ){
+                //echo "sub_menu_item_array" . json_encode($sub_menu_item_array). "\n\n";
                 $each_menu_item_link_name = $each_main_menu_item -> get_link_name();
                 $each_menu_item_link_value = $each_main_menu_item -> get_link_value();
                 $each_menu_item_object_id = $each_main_menu_item -> get_object_id();
@@ -40,7 +42,6 @@
                 $obj = $each_main_menu_item -> get_object();
                 $type = ($obj=='meta_category') ? 'meta' : 'main';
                 $each_menu_item_string = '"'.$each_menu_item_slug.'":{"id": "'.$each_menu_item_object_id.'", "type": "'.$type.'", "url":"'.$each_menu_item_link_value.'","name":"'.$each_menu_item_link_name.'"';
-                    echo $each_menu_item_string;
                 if ( array_key_exists($each_main_menu_key, $sub_menu_item_array) ) { //has sub menu item
                     //count submenu items
                     $count_sub_menu_item = count($sub_menu_item_array[$each_main_menu_key]);
@@ -48,10 +49,29 @@
                     $submenu_item_list_main_string = ',"children": [';
                     $submenu_item_list_array = array();
                     foreach( $sub_menu_item_array[$each_main_menu_key] as $each_sub_menu_item ){
-                        
                         $obj = $each_sub_menu_item->get_object();
                         $type = ($obj=='meta_category')?'meta':'main';
-                        $each_sub_menu_item_string = '{"id": "'.$each_sub_menu_item->get_object_id().'", "type": "'.$type.'", "url":"'.$each_sub_menu_item->get_link_value().'", "name":"'.$each_sub_menu_item->get_link_name().'"}';
+                        $each_sub_menu_item_id = $each_sub_menu_item->get_object_id();
+                        $each_sub_menu_item_string = '{"id": "' . $each_sub_menu_item_id .'", "type": "'.$type.'", "url":"'.$each_sub_menu_item->get_link_value().'", "name":"'.$each_sub_menu_item->get_link_name().'"';
+                        if ( array_key_exists($each_sub_menu_item_id, $sub_menu_item_array) ) {
+                            $count_sub_sub_menu_item = count($sub_menu_item_array[$each_sub_menu_item_id]);
+                            $submenu_sub_item_list_main_string = ',"sub_children": [';
+                            $submenu_sub_item_list_array = array();
+                            foreach( $sub_menu_item_array[$each_sub_menu_item_id] as $each_sub_sub_menu_item ) {
+                                $sub_obj = $each_sub_sub_menu_item->get_object();
+                                $each_sub_sub_menu_item_id = $each_sub_sub_menu_item->get_object_id();
+                                $each_sub_sub_menu_item_url = $each_sub_sub_menu_item->get_link_value();
+                                $each_sub_sub_menu_item_name = $each_sub_sub_menu_item->get_link_name();
+                                $sub_type = ( strpos($each_sub_sub_menu_item_name, 'img' ) ) ? 'image':'link';
+                                $each_sub_sub_menu_item_string = '{"id": "' . $each_sub_sub_menu_item_id .'", "type": "'.$sub_type.'", "url":"'.$each_sub_sub_menu_item->get_link_value().'", "name":"'. $each_sub_sub_menu_item_name .'"}';
+                                $submenu_sub_item_list_array[] = $each_sub_sub_menu_item_string;
+                            }
+                            $submenu_sub_item_list_string = implode(",", $submenu_sub_item_list_array);
+                            $submenu_sub_item_list_main_string .= $submenu_sub_item_list_string;
+                            $submenu_sub_item_list_main_string .= ']';
+                            $each_sub_menu_item_string .= $submenu_sub_item_list_main_string;
+                        }
+                        $each_sub_menu_item_string .= '}';
                         $submenu_item_list_array[] = $each_sub_menu_item_string;
                     }
                     $submenu_item_list_string = implode(",", $submenu_item_list_array);
