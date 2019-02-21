@@ -12,7 +12,7 @@
 	 * Domain Path:       /languages
 	 */
 
-	require_once('assets/actions/nav_menu_process.php');
+	require_once('assets/components/nav_menu_process.php');
 
 
 	if ( ! defined('WPINC') ) {
@@ -65,5 +65,4 @@
 	add_action( 'wp_update_nav_menu', 'menu_to_json' );
 	//add_action( 'wp_update_nav_menu', 'menu_to_json_test' );
 
-	//echo "works";
  ?>
