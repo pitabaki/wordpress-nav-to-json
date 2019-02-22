@@ -1,1 +1,1 @@
-jQuery(document).ready(function(o){console.log("working")});
+jQuery(document).ready(function(n){n.ajax({method:"GET",url:"https://www.anaplan.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json"}).done(function(n){console.log(n)}).fail(function(n,a){console.log("Error: File failed to load.\n\ntextStatus = "+a)})});

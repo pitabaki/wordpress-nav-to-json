@@ -52,7 +52,8 @@
                         $obj = $each_sub_menu_item->get_object();
                         $type = ($obj=='meta_category')?'meta':'main';
                         $each_sub_menu_item_id = $each_sub_menu_item->get_object_id();
-                        $each_sub_menu_item_string = '{"id": "' . $each_sub_menu_item_id .'", "type": "'.$type.'", "url":"'.$each_sub_menu_item->get_link_value().'", "name":"'.$each_sub_menu_item->get_link_name().'"';
+                        $each_sub_menu_item_link_value = str_replace("anaplan.staging.wpengine","www.anaplan", $each_sub_menu_item -> get_link_value());
+                        $each_sub_menu_item_string = '{"id": "' . $each_sub_menu_item_id .'", "type": "'.$type.'", "url":"'.$each_sub_menu_item_link_value.'", "name":"'.$each_sub_menu_item->get_link_name().'"';
                         if ( array_key_exists($each_sub_menu_item_id, $sub_menu_item_array) ) {
                             $count_sub_sub_menu_item = count($sub_menu_item_array[$each_sub_menu_item_id]);
                             $submenu_sub_item_list_main_string = ',"sub_children": [';
@@ -63,7 +64,7 @@
                                 $each_sub_sub_menu_item_url = str_replace("anaplan.staging.wpengine","www.anaplan", $each_sub_sub_menu_item->get_link_value());
                                 $each_sub_sub_menu_item_name = $each_sub_sub_menu_item->get_link_name();
                                 $sub_type = ( strpos($each_sub_sub_menu_item_name, 'img' ) ) ? 'image':'link';
-                                $each_sub_sub_menu_item_string = '{"id": "' . $each_sub_sub_menu_item_id .'", "type": "'.$sub_type.'", "url":"'.$each_sub_sub_menu_item->get_link_value().'", "name":"'. $each_sub_sub_menu_item_name .'"}';
+                                $each_sub_sub_menu_item_string = '{"id": "' . $each_sub_sub_menu_item_id .'", "type": "'.$sub_type.'", "url":"'.$each_sub_sub_menu_item_url.'", "name":"'. $each_sub_sub_menu_item_name .'"}';
                                 $submenu_sub_item_list_array[] = $each_sub_sub_menu_item_string;
                             }
                             $submenu_sub_item_list_string = implode(",", $submenu_sub_item_list_array);
