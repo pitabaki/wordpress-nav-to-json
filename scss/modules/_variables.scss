@@ -1,0 +1,86 @@
+/*
+ * Button variables
+ */
+
+$button-padding: 10px 18px;
+
+/*
+ * Transition times
+ */
+
+$time: 0.15s;
+
+/*
+ * Placeholders
+ */
+
+%container {
+    margin: 0 auto;
+}
+
+/*
+ * Details
+ */
+
+$main-border: 1px solid $main-light-grey;
+
+@-moz-keyframes circle-grow { 
+	0%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+	50%{
+		width: 600px;
+		height: 600px;
+		left: -90px;
+		top: -120px;
+	}
+	100%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+}
+@-webkit-keyframes circle-grow { 
+	0%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+	50%{
+		width: 600px;
+		height: 600px;
+		left: -90px;
+		top: -120px;
+	}
+	100%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+}
+@keyframes circle-grow { 
+	0%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+	50%{
+		width: 600px;
+		height: 600px;
+		left: -90px;
+		top: -120px;
+	}
+	100%{
+		width: 800px;
+		height: 800px;
+		left: -200px;
+		top: -220px;
+	}
+}

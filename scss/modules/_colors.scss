@@ -1,0 +1,127 @@
+/*
+ * Colors
+ */
+
+ $white: rgb(255, 255, 255); /* #fff */
+ $body-main: rgb(99, 121, 128); /* #637980 */
+ $anaplan-blue-lt: rgb(54, 178, 231); /* #36b2e7 */
+ $anaplan-blue-dk: rgba(0, 199, 178, 0.9); /* #00c7b2 */
+ $anaplan-blue-dk-trans: rgba(2, 53, 81, 0);
+ $anaplan-green: rgb(46, 203, 113); /* #2ecb71 */
+ $anaplan-fuchsia: #e40081;
+ $anaplan-fuchsia-hover: #d20378;
+ $anaplan-status-grey: #403c3f;
+ $tile-blue: rgb(18, 107, 176); /* #126bb0 */
+ $tile-purple: rgb(165, 117, 210); /* #a575d2 */
+ $tile-orange: rgb(255, 162, 82); /* #ffa252 */
+ $anaplan-cpx-burnt-orange: #f16e21;
+ $anaplan-cpx-teal: #00c6b1;
+
+ /*
+ * Shades
+ */
+ 
+$main-white: rgba(255, 255, 255, 1);
+$main-light-light-grey: #eeeded; /* #e0e4e7 */
+$main-lightest-grey: rgba(224, 228, 231, 1); /* #e0e4e7 */
+$main-light-grey: rgba(193, 200, 206, 1); /* #c1c8ce */
+$main-partner-grey: #eff1f3;
+$main-grey: rgba(172, 182, 190, 1); /* #acb6be */
+$main-dark-grey: rgba(153, 164, 174, 1); /* #99a4ae */
+$main-darker-grey: #3a3a3a; /* #6c7782 */
+$main-darkest-grey: rgba(72, 80, 88, 1); /* #485058 */
+$main-black: rgba(0, 0, 0, 1);
+$main-resource-tile-border: #eef2f3;
+ 
+ /*
+  * Hub (18) Colors
+  */
+ 
+ $anaplan-purple: rgba(164, 77, 196, 1); /* #a44dc4 */
+ $anaplan-orange: rgb(255, 110, 0); /* #FF6E00 */
+ $anaplan-orange-trans: rgba(255, 110, 0, 0); /* #FF6E00 */
+ $anaplan-orange-hover: rgb(206, 95, 19); /* #CE5F13 */
+ $anaplan-teal: #00C7B2;
+ $anaplan-teal-hover: #139182;
+ $anaplan-button-green: #00c7b2; /*Registration Button*/
+ $anaplan-button-green-hover: #138b7e;/*Registration Button Hover*/
+ $anaplan-video-blue: #00a9e0;
+ $anaplan-deep-blue: rgba(11,34,101,1); /*Used for blue buttons and some bars/dividers (e.g. header nav)*/
+ $anaplan-deep-blue-transparent: rgba(11,34,101,0); /*Used for blue buttons and some bars/dividers (e.g. header nav)*/
+ $anaplan-deep-blue-hover: #031447; /*Used for blue buttons and some bars/dividers (hover state)*/
+ $anaplan-carousel-indicator-orange: #FFA866;
+ $anaplan-grey-type: #6c7782;
+ $anaplan-grey-blue: #3a3a3a;
+ $anaplan-light-grey: #E0E4E7;
+ $anaplan-grey: #DBE0E3;
+ $anaplan-pewter: #427EDB;
+ $anaplan-card-lightest-blue: #b1cbf1;
+ $anaplan-card-light-blue: #D8E5F8;
+ $anaplan-card-dark-blue: #00768c;
+ $anaplan-card-lighter-blue: #6498E2;
+ $anaplan-card-pewter: #3D7EDB;
+ $anaplan-price-active-left: #CCF4F0;
+ $anaplan-price-active-right: #006459;
+ $home-tile-color-01: #126bb0;
+ $home-tile-color-02: #2a9ad5;
+ $home-tile-color-03: #32bfac;
+ $home-tile-color-04: #1e83c2;
+ $home-tile-color-05: #36b2e7;
+ $home-tile-color-06: #2ecc71;
+ $home-type-blue: #637983; /*Color of text on white bg*/
+ $home-type-white: #ffffff; /*Color of text on dark bg*/
+ $home-type-white-hover: #a9b5bb; /*Color of text on dark bg*/
+ 
+ $home-footer-purple: #967dd4;
+ $home-footer-blue-01: #41ace5;
+ $home-footer-blue-02: #35b5dc;
+ $home-footer-blue-03: #33abe2;
+ $home-footer-blue-03-dark: #1774b7;
+ $home-footer-green: #2ec97f;
+ 
+ $attending-purple: #a575d2;
+ 
+ /*
+  * Speakers
+  */
+ 
+ $speakers-color: #36b2e7;
+ 
+ /*
+  * Agenda
+  */
+ 
+ $agenda-color: #126bb0;
+ 
+ /*
+  * registration colors
+  */
+ 
+ $register-green: #2ecc71;
+ $tile-white: #eef2f3;
+ $tile-grey: #a9b5bb;
+ 
+ /*
+  * training colors
+  */
+ 
+ $training-blue: #6e93dd;
+ 
+ /*
+  * sponsor colors
+  */
+ 
+ $sponsor-blue: #33bbc0;
+ 
+ /*
+  * hub comes to you colors
+  */
+ 
+ $hub-comes-blue: #d3dbe3;
+ 
+ 
+ /*
+  * Status Icon colors
+  */
+ 
+  $anaplan-status-green: #94c93b;
