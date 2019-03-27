@@ -8,6 +8,10 @@ jQuery(document).ready(function($){
         var siteFooter = $("#site-footer");
         var footerMarkupArr = [];
         var navMarkupArr = [];
+
+        if ( !siteFooter.hasClass("site-footer") ) {
+            siteFooter.addClass("site-footer");
+        }
             
         $.each( menus, function( key, val ){
 
@@ -93,13 +97,27 @@ jQuery(document).ready(function($){
 
                             var subchildrenBuild = function ( arr ) {
                                 var subChildrenMarkup = [];
+                                var imgRegExp = /(\.png)|(\.jpg)|(img)/gi;
+                                var subMenuButton = false;
                                 var subChildrenBuildLoop = function ( num ) {
                                     if ( num < arr.length ) {
-                                        var markup = "<li class='menu-item'>${anchor}</li>";
-                                        var liAnchor = "<a href='${href}'>${title}</a>";
-                                        liAnchor = liAnchor.replace(/\$\{href\}/gi, arr[num].url);
-                                        liAnchor = liAnchor.replace(/\$\{title\}/gi, arr[num].name);
-                                        markup = markup.replace(/\$\{anchor\}/gi, liAnchor);
+                                        if ( imgRegExp.test(arr[num].url) ) {
+                                            var markup = "<li class='submenu-img menu-item'>${img}</li>";
+                                            var liImg = "<img src='${src}' alt='${alt}'/>";
+                                            liImg = liImg.replace(/\$\{src\}/gi, arr[num].url);
+                                            liImg = liImg.replace(/\$\{alt\}/gi, arr[num].name.replace("img",""));
+                                            markup = markup.replace(/\$\{img\}/gi, liImg);
+                                            subMenuButton = true;
+                                        } else {
+                                            var markup = ( subMenuButton ) ? "<li class='sub-menu-button menu-item'>${anchor}</li>" : "<li class='menu-item'>${anchor}</li>";
+                                            var liAnchor = "<a href='${href}'>${title}</a>";
+                                            liAnchor = liAnchor.replace(/\$\{href\}/gi, arr[num].url);
+                                            liAnchor = liAnchor.replace(/\$\{title\}/gi, arr[num].name);
+                                            markup = markup.replace(/\$\{anchor\}/gi, liAnchor);
+                                            if ( subMenuButton === true ) {
+                                                subMenuButton = false;
+                                            }
+                                        }
                                         subChildrenMarkup.push(markup);
                                         num++;
                                         subChildrenBuildLoop(num);
@@ -204,12 +222,15 @@ jQuery(document).ready(function($){
     });
 
     $(document).on("mouseover", ".sub-menu-dropdown", function(e){
-        console.log($(this).position().left);
-        var selection = $(this).find(".sub-menu");
+        var selection = $(this).children(".sub-menu");
+        var selectionWidth = parseInt(selection.css("width"));
         selection.css("max-height", "500px");
-        console.log(selection.css("left"));
-        if ( selection.css("left") === "auto" ) {
-            selection.css("left", $(this).position().left);
+        if ( selection.hasClass("left-update") === false ) {
+           // $(this).position().left;
+            var cssUpdate = parseInt($(this).position().left - (selectionWidth/2));
+            console.log(cssUpdate);
+            selection.css("left", cssUpdate);
+            selection.addClass("left-update");
         }
     });
     $(document).on("mouseout", ".sub-menu-dropdown", function(e){

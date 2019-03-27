@@ -8,6 +8,10 @@ jQuery(document).ready(function($){
         var siteFooter = $("#site-footer");
         var footerMarkupArr = [];
         var navMarkupArr = [];
+
+        if ( !siteFooter.hasClass("site-footer") ) {
+            siteFooter.addClass("site-footer");
+        }
             
         $.each( menus, function( key, val ){
 

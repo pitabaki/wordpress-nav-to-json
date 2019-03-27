@@ -1,4 +1,4 @@
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 993px) {
 	.site-copyright {
 		.site-info {
 			&.site-info--right {
@@ -11,6 +11,9 @@
 			}
 		}
 	}
+	.col-md-2 {
+		width: 16.667%;
+	}
 }
 @media screen and (max-width: 992px) {
 	.site-footer {
@@ -20,6 +23,9 @@
 		.footer-social {
 			padding: 0 15px;
 		}
+	}
+	.col-sm-6 {
+		width: 50%;
 	}
 }
 @media screen and (max-width: 767px) {

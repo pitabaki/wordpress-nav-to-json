@@ -65,12 +65,7 @@
 
 		$current_host = $_SERVER["HTTP_HOST"];
 
-		/*
-
-		For testing purposes BEGIN
-		DELETE WHEN DONE
-
-		*/
+		if ( $current_host === "anaplan.com" || $current_host === "www.anaplan.com" || $current_host === "anaplan.staging.wpengine.com" ) {
 		
 			$response_container = "response([%s])";
 			$navigation_menu = '{"container":"Navigation","item":[%s]}';
@@ -115,37 +110,12 @@
 			$response_container = sprintf($response_container, $combined_arr);
 
 			//Determine file directory
-			$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu-nav-test.json';
+			$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu-nav.json';
 
 			//Print JSON content
 			file_put_contents($file, $response_container);
 
-
-		/*
-
-		For testing purposes END
-		DELETE WHEN DONE
-
-		*/
-
-		/*
-		if ( $current_host === "anaplan.com" || $current_host === "www.anaplan.com" || $current_host === "anaplan.staging.wpengine.com" ) {
-		
-			$menus = get_terms( 'nav_menu' );
-			$menu_json_data_string_obj = "response([";
-			for ( $i=0; $i < count($menus); $i++ ) {
-				$json_string_end = ( $i + 1 === count($menus) ) ? "]}])" : "]},";
-				$menu_json_data_string = nav_menu_process($menus[$i]->name);
-				$menu_json_data_string_obj .= '{"menu_name":"' . $menus[$i]->name .'","menu":[' . $menu_json_data_string . $json_string_end;
-			}
-
-			//Determine file directory
-			$file = dirname(__FILE__) . '/assets/public/anaplan-main-menu-nav.json';
-
-			//Print JSON content
-			file_put_contents($file, $menu_json_data_string_obj);
-
-		}*/
+		}
 
 	}
 
