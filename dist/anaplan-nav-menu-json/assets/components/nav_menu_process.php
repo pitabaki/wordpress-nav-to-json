@@ -3,7 +3,7 @@
     
     function nav_menu_process( $pass_menu_name ) {
         $menu_name = $pass_menu_name; //menu name (declared by user) and pulled by get request from wp
-        $menu_json_data_string = '{';
+        //$menu_json_data_string = '{';
         
         if ( $menu_name ) {
 
@@ -44,7 +44,7 @@
                 $each_menu_item_classes = $each_main_menu_item -> get_classes();
                 $each_menu_item_order = substr($each_menu_item_classes, strpos($each_menu_item_classes, "order") + 6, strlen($each_menu_item_classes));
                 $type = ($obj=='meta_category') ? 'meta' : 'main';
-                $each_menu_item_string = '"'.$each_menu_item_slug.'":{"id": "'.$each_menu_item_object_id.'", "order": "'.$each_menu_item_order .'", "classes": "'.$each_menu_item_classes.'", "type": "'.$type.'", "url":"'.$each_menu_item_link_value.'","name":"'.$each_menu_item_link_name.'"';
+                $each_menu_item_string = '{"'.$each_menu_item_slug.'":{"id": "'.$each_menu_item_object_id.'", "order": "'.$each_menu_item_order .'", "classes": "'.$each_menu_item_classes.'", "type": "'.$type.'", "url":"'.$each_menu_item_link_value.'","name":"'.$each_menu_item_link_name.'"';
                 if ( array_key_exists($each_main_menu_key, $sub_menu_item_array) ) { //has sub menu item
                     //count submenu items
                     $count_sub_menu_item = count($sub_menu_item_array[$each_main_menu_key]);
@@ -83,7 +83,9 @@
                     $submenu_item_list_string = implode(",", $submenu_item_list_array);
                     $submenu_item_list_main_string .= $submenu_item_list_string;
                     $submenu_item_list_main_string .= ']';
-                    $each_menu_item_string .= $submenu_item_list_main_string;
+                    $each_menu_item_string .= $submenu_item_list_main_string .= '}';
+                } else {
+                    $each_menu_item_string .= '}';
                 }
                 $each_menu_item_string .= '}';
                 $menu_item_json_array[] = $each_menu_item_string;
@@ -92,7 +94,7 @@
         }
         
         $menu_json_data_string .= $menu_item_json_string;
-        $menu_json_data_string .= '}';
+        //$menu_json_data_string .= '}';
         return $menu_json_data_string;
     }
 ?>

@@ -5,14 +5,13 @@ var gulp = require("gulp"),
     cssMinify = require("gulp-clean-css"),
     sass = require("gulp-sass");
 
-var watchJS = "./anaplan-nav-menu-json/assets/actions/*.js",
-    sassFile = "./scss/style.scss",
-    sassFileDest = "./anaplan-nav-menu-json/assets/components/css/";
+var watchJS = "./prod/assets/actions/*.js",
+    sassFile = "./prod/scss/style.scss",
+    sassFileDest = "./dist/anaplan-nav-menu-json/assets/components/css/";
 
 gulp.task("scripts", function(){
     console.log("JavaScript files being watched at " + watchJS);
     return gulp.src(watchJS)
-        .pipe(watch(watchJS))
 		.pipe(minify({
 			ext:{
 				src: '.js',
@@ -20,7 +19,7 @@ gulp.task("scripts", function(){
 			}
 		}))
         .on('pipe', function(){ log('Done!'); })
-        .pipe(gulp.dest("./anaplan-nav-menu-json/assets/actions/min"))
+        .pipe(gulp.dest("./dist/anaplan-nav-menu-json/assets/actions"))
 });
 
 gulp.task('sass', function(){
@@ -29,3 +28,6 @@ gulp.task('sass', function(){
 		.pipe(cssMinify({compatibility: 'ie8'}))
 		.pipe(gulp.dest(sassFileDest));
 });
+
+
+gulp.task('god', ['scripts','sass']);

@@ -3,7 +3,7 @@
 	 * Plugin Name:       Anaplan Menu to JSON
 	 * Plugin URI:        https://www.anaplan.com/
 	 * Description:       Saves a JSON file of Anaplan's navigation menus
-	 * Version:           1.0.1
+	 * Version:           1.0.5
 	 * Author:            Peter Berki
 	 * Author URI:        https://kumadev.com/
 	 * License:           GPL-2.0+

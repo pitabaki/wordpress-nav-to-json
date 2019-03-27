@@ -1,7 +1,12 @@
 jQuery(document).ready(function($){
+    /*
+    
+    GET request the JSON menu structure from anaplan.com
+    
+    */
     $.ajax({
         method: "GET",
-        url: "https://anaplan.staging.wpengine.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json",
+        url: "https://www.anaplan.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json",
         dataType: "json"
     }).done(function(menus){
 
