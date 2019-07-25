@@ -1,15 +1,20 @@
 /*
 styling for menus
 */
-#site-navigation {
+#site-navigation,
+.menu-main-menu-container {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	margin-top: 39px;
 	text-align: right;
-    height: 54px;
+	height: 54px;
     #primary-menu {
-        text-align: center;
+		display: flex;
+		text-align: center;
+		li {
+			list-style: none;
+		}
     }
 	.sub-menu-remove-click {
 		a {
@@ -21,7 +26,7 @@ styling for menus
 		text-decoration: none;
 		font-size: 18px;
 		color: #7a7a7a;
-		padding: 0 0 0 52px;
+		padding: 0 0 0 42px;
 		@include transition(color 0.3s ease-in);
 		.fa {
 			&.fa-chevron-down {
@@ -57,35 +62,37 @@ styling for menus
 	.sub-menu {
 		display: flex;
 		position: absolute;
-		top: 54px !important;
+		top: 54px;
 		right: 0;
-		height: 500px;
 		width: 660px;
 		box-shadow: 0 1px 2px rgba(0,0,0,.2);
 		li {
 			display: block !important;
-			position: relative !important;
-			padding: 10px;
+			position: relative;
+			padding: 0 15px 15px 15px;
 			width: 50%;
 			img {
-				padding: 10px 20px 0;
+				padding: 24px 20px 0;
 				width: 100%;
 			}
 			a {
 				display: block;
-				position: absolute;
-				padding-left: 15px;
-				padding-bottom: 5px !important;
-				font-size: 18px !important;
+				position: relative;
+				padding: 24px 15px 15px 15px;
+				font-size: 18px;
+				line-height: 24px !important;
 				font-weight: bold;
-				width: 100% !important;
+				text-align: left;
+				color: #3a3a3a;
+				width: 100%;
 				border-bottom: 1px solid #3a3a3a;
 			}
 			&.sub-menu-title {
 				border-top: 6px solid #0b2265;
 				.sub-menu {
 					display: block !important;
-					position: relative !important;
+					position: relative;
+					top: 0;
 					margin: 0 auto;
 					padding: 0 !important;
 					left: 0;
@@ -100,7 +107,8 @@ styling for menus
 						width: 100%;
 						&.sub-menu-button {
 							a {
-								color: #e40081 !important;
+								font-size: 18px;
+								color: #e40081;
 								font-weight: bold;
 								@include transition(color 0.3s ease-in);
 								&:after {
@@ -120,10 +128,10 @@ styling for menus
 						}
 						a {
 							position: relative;
-							padding-left: 15px;
-							font-size: 16px !important;
+							padding-top: 15px;
+							font-size: 16px;
 							font-weight: normal;
-							color: #7a7a7a !important;
+							color: #7a7a7a;
 							border: 0;
 							&:after {
 								position: absolute;
@@ -154,7 +162,9 @@ styling for menus
 	.menu-main-menu-container,
 	.menu-main-nav-container,
 	.menu-site-navigation-container {
-		display: inline-block;
+		display: flex;
+		justify-content: flex-end;
+		margin: 0;
 		ul {
 			display: flex;
 			list-style: none;
@@ -179,7 +189,9 @@ styling for menus
     }
     .menu-item {
         .sub-menu {
-            padding-left: 0 !important;
+			padding-left: 0 !important;
+			overflow: hidden;
+			background-color: #ffffff;
         }
     }
 }
@@ -247,4 +259,8 @@ styling for menus
 			padding: 5px;
 		}
 	}
+}
+
+.menu-main-menu-container  {
+	margin: 0 auto;
 }

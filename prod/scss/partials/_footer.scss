@@ -2,11 +2,23 @@
 footer {
 	&.site-footer {
 		position: relative;
+		display: block;
 		padding: 90px 0 60px;
 		top: 100%;
 		bottom: 0;
 		width: 100%;
 		background-color: $anaplan-deep-blue !important;
+		.row {
+			margin: 0 auto;
+			max-width: 1228px;
+		}
+		.col-md-2,
+		.col-md-6 {
+			display: inline-block;
+			margin: 0 auto;
+			padding: 10px;
+			float: left;
+		}
 		h3 {
 			font-size: 19px;
 			font-weight: $bold;
@@ -15,11 +27,13 @@ footer {
 		ul {
 			margin: 20px auto;
 			li {
-				margin-bottom: 1.2rem;
+				margin-bottom: 12px;
+				font-size: 14px;
+				line-height: 24px;
 				list-style: none;
 				a {
 					font-size: 14px;
-					line-height: 18px;
+					line-height: 24px;
 					color: #ffffff;
 					text-decoration: none;
 				}
@@ -38,8 +52,8 @@ footer {
 						align-items: center;
 						font-size: 18px;
 						color: $anaplan-deep-blue;
-						width: 3.6rem;
-						height: 3.6rem;
+						width: 36px;
+						height: 36px;
 						background-color: #ffffff;
 						@include border-radius(3.6rem);
 					}
@@ -90,4 +104,7 @@ footer {
 			color: rgba(255,255,255,0.86);
 		}
 	}
+}
+footer.site-footer {
+	padding: 0 !important;
 }

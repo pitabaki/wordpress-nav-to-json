@@ -122,9 +122,10 @@
 	
 	function update_nav_menus() {
 		$current_host = $_SERVER["HTTP_HOST"];
+		$current_uri = $_SERVER["REQUEST_URI"];
 		if ( $current_host !== "anaplan.com" && $current_host !== "www.anaplan.com" && $current_host !== "anaplan.staging.wpengine.com" ) {
 			//offload JS file here
-			wp_enqueue_script( 'anaplan-nav-menu', plugins_url() . '/anaplan-nav-menu-json/assets/actions/anaplan-nav-build--bootstrap.js', ['jquery'] );
+			wp_enqueue_script( 'anaplan-nav-menu', plugins_url() . '/anaplan-nav-menu-json/assets/actions/anaplan-nav-build--bootstrap.js', ['jquery'], null, true );
 			wp_enqueue_style( 'anaplan-nav-menu-style', plugins_url() . '/anaplan-nav-menu-json/assets/components/css/style.css' );
 		}
 	}

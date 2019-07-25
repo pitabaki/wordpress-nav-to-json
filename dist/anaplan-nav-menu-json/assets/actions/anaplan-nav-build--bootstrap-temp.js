@@ -167,10 +167,8 @@ jQuery(document).ready(function($){
                             var childrenBuildLoop = function (num) {
                                 if ( num < arr.length ) {
                                     //initiate subChildrenMarkup build
-                                    if ( arr[num].sub_children !== undefined ) {
-                                        var subChildrenMarkup = subchildrenBuild(arr[num].sub_children);
-                                        var childrenSubMenu = subMenu.replace(/\$\{submenu\}/gi, subChildrenMarkup);
-                                    }
+                                    var subChildrenMarkup = subchildrenBuild(arr[num].sub_children);
+                                    var childrenSubMenu = subMenu.replace(/\$\{submenu\}/gi, subChildrenMarkup);
 
                                     //build children markup
                                     var markup = "<li class='sub-menu-title menu-item'>${anchor}${submenuChildren}</li>";
