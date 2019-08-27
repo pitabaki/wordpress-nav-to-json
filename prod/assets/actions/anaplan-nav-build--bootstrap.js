@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
                     var submenuChildrenPresent = typeof miniVal.children !== "undefined";
 
                     var liMenuClass = ( submenuChildrenPresent ) ? "sub-menu-dropdown menu-item " + submenuModifierClass : "menu-item";
-                    var chevronDown = ( submenuChildrenPresent ) ? " <i style='display:inline-block;' class='fa fa-chevron-down'></i>" : "";
+                    var chevronDown = ( submenuChildrenPresent ) ? " <i style='display:flex;' class='fa fa-chevron-down'></i>" : "";
                     var liAnchor = "<a href='${href}'>${title}${chevron}</a>";
                     liAnchor = liAnchor.replace(/\$\{href\}/gi, miniVal.url);
                     liAnchor = liAnchor.replace(/\$\{title\}/gi, miniVal.name);

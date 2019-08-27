@@ -123,7 +123,7 @@
 	function update_nav_menus() {
 		$current_host = $_SERVER["HTTP_HOST"];
 		$current_uri = $_SERVER["REQUEST_URI"];
-		if ( $current_host !== "anaplan.com" && $current_host !== "www.anaplan.com" && $current_host !== "anaplan.staging.wpengine.com" ) {
+		if ( $current_host !== "anaplan.com" && $current_host !== "www.anaplan.com" && $current_host ) {
 			//offload JS file here
 			wp_enqueue_script( 'anaplan-nav-menu', plugins_url() . '/anaplan-nav-menu-json/assets/actions/anaplan-nav-build--bootstrap.js', ['jquery'], null, true );
 			wp_enqueue_style( 'anaplan-nav-menu-style', plugins_url() . '/anaplan-nav-menu-json/assets/components/css/style.css' );
@@ -135,5 +135,18 @@
 	add_action( 'wp_update_nav_menu', 'menu_to_json' );
 	//add_action( 'wp_update_nav_menu', 'menu_to_json_test' );
 	add_action( 'init', 'update_nav_menus' );
+
+	function anaplan_nav_send_headers( $header ) {
+		header( 'X-Xss-Protection: 1; mode=block' );
+		header( 'X-Content-Type-Options: nosniff' );
+		header( 'Content-Security-Policy: upgrade-insecure-requests' );
+		header( 'Strict-Transport-Security: max-age=31536000' );
+		header( 'Referrer-Policy: strict-origin-when-cross-origin');
+		header( 'Access-Control-Allow-Origin: *');
+		header( 'Access-Control-Allow-Methods: GET');
+		//header( 'Access-Control-Allow-Credentials: true' );
+	  }
+	
+	add_filter( 'send_headers', 'anaplan_nav_send_headers' );
 
  ?>

@@ -22,15 +22,18 @@ styling for menus
 		}
 	}
 	a {
-        display: inline-block;
+        display: flex;
 		text-decoration: none;
 		font-size: 18px;
 		color: #7a7a7a;
-		padding: 0 0 0 42px;
+		padding: 0 0 0 30px;
 		@include transition(color 0.3s ease-in);
 		.fa {
 			&.fa-chevron-down {
-				display: none;
+				margin-left: 10px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				font-size: 12px;
 				line-height: 0;
 			}
@@ -38,7 +41,10 @@ styling for menus
 	}
 	.fa {
 		&.fa-chevron-down {
-			display: none;
+			margin-left: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			font-size: 12px;
 			line-height: 0;
 		}
@@ -201,7 +207,6 @@ styling for menus
 	justify-content: flex-end;
 	align-items: center;
 	text-align: right;
-	float: right;
 	height: 34px;
 	span > div {
 		display: inline-block;

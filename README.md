@@ -11,6 +11,13 @@ Create your Wordpress navigation menus within the Appearance -> Menu. Clicking "
 ### Step 3
 Make a request to your nav menu file. The JSON file of your nav is stored in a public folder within this plugin's directory. More or less, the path will look like so: [Your site].com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json
 
-## Examples
-Here's an example of what gets [output](https://www.anaplan.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json)
+## Production Examples
+Anaplan Nav in JSON format [json]https://www.anaplan.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu.json
+
+Anaplan Nav in JSON format with response [jsonp]
+https://www.anaplan.com/wp-content/plugins/anaplan-nav-menu-json/assets/public/anaplan-main-menu-nav.json
+
+
+
+
 
