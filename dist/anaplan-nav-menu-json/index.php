@@ -3,7 +3,7 @@
 	 * Plugin Name:       Anaplan Menu to JSON
 	 * Plugin URI:        https://www.anaplan.com/
 	 * Description:       Saves a JSON file of Anaplan's navigation menus
-	 * Version:           1.0.5
+	 * Version:           1.1.1
 	 * Author:            Peter Berki
 	 * Author URI:        https://kumadev.com/
 	 * License:           GPL-2.0+
@@ -12,7 +12,7 @@
 	 * Domain Path:       /languages
 	 */
 
-	require_once('assets/components/nav_menu_process_test.php');
+	require_once('assets/components/nav_menu_json.php');
 	require_once('assets/components/nav_menu_process_deprecated.php');
 	require_once('assets/components/nav_menu_process.php');
 
@@ -20,11 +20,18 @@
 		die;
 	}
 
-	function menu_to_json_test() {
-		echo "menu_to_json_test() processing";
-		$menus = get_terms( 'nav_menu' );
-		for ( $i=0; $i < count($menus); $i++ ) {
-			$menu_json_data_string = nav_menu_process_test($menus[$i]->name);
+	function nav_menu_to_json() {
+		$current_host = $_SERVER['HTTP_HOST'];
+		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
+			$menu_json_data_string = '[';
+			$menu_json_data_string .= nav_menu_json('Main Nav');
+			$menu_json_data_string .= "]";
+
+			//Determine file directory
+			$file = dirname(__FILE__) . '/assets/public/anaplan-dotcom-main-nav.json';
+
+			//Print JSON content
+			file_put_contents($file, $menu_json_data_string);
 		}
 	}
 	
@@ -130,11 +137,7 @@
 		}
 	}
 
-	add_action( 'wp_update_nav_menu', 'menu_to_jsonp' );
-	/* This is deprecated. Begin working this out */
-	add_action( 'wp_update_nav_menu', 'menu_to_json' );
-	//add_action( 'wp_update_nav_menu', 'menu_to_json_test' );
-	add_action( 'init', 'update_nav_menus' );
+	add_action( 'wp_update_nav_menu', 'nav_menu_to_json' );
 
 	function anaplan_nav_send_headers( $header ) {
 		header( 'X-Xss-Protection: 1; mode=block' );
@@ -147,6 +150,6 @@
 		//header( 'Access-Control-Allow-Credentials: true' );
 	  }
 	
-	add_filter( 'send_headers', 'anaplan_nav_send_headers' );
+	//add_filter( 'send_headers', 'anaplan_nav_send_headers' );
 
  ?>
