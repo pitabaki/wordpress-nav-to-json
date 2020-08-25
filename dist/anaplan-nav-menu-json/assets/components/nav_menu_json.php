@@ -25,9 +25,9 @@
                     //define a new menu_item object
                     $menu_item_obj = new Menu_Item($current_menu_item_obj->object, $current_menu_item_obj->object_id, $current_menu_item_obj->title, $current_menu_item_obj->url, implode(",", $current_menu_item_obj->classes));
                     $main_menu_item_array[$current_menu_item_obj->ID] = $menu_item_obj;
-                } else { //sub menu found
+                } else {
+                    //sub menu found
                     $menu_item_obj = new Menu_Item($current_menu_item_obj->object, $current_menu_item_obj->object_id, $current_menu_item_obj->title, $current_menu_item_obj->url, implode(",", $current_menu_item_obj->classes));
-
                     $sub_menu_item_array[$current_menu_item_obj->menu_item_parent][] = $menu_item_obj;
                 }
 
@@ -60,7 +60,6 @@
                                 $menu_level_three_obj = new JSON_Structure($each_sub_sub_menu_item);
                                 $each_sub_sub_menu_item_string = $menu_level_three_obj->get_menu_json() . '}';
                                 $submenu_sub_item_list_array[] = $each_sub_sub_menu_item_string;
-                                
                             }
 
                             $submenu_sub_item_list_string = implode(",", $submenu_sub_item_list_array);

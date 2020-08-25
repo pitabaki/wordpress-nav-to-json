@@ -7,7 +7,6 @@
         public function __construct($menu){
           $this->title = $menu->get_link_name();
           $this->href = $menu->get_link_value();
-          $this->id = $menu->get_object_id();
         }
       
         public function get_href(){
@@ -15,8 +14,10 @@
         }
 
         public function get_menu_json(){
-            return '{ "title": "'. $this->title .
-                '", "href":"'. $this->href .
+            $title = ( strlen($this->title) > 0 ) ? $this->title:"";
+            $href = ( strlen($this->href) > 0 ) ? $this->href:"";
+            return '{ "title": "'. $title .
+                '", "href":"'. $href .
                 '", "description":"' .
                 '", "currentLink": "false"';
         }
