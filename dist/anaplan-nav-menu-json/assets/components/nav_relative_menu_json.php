@@ -2,7 +2,7 @@
     require_once(__DIR__ . '/../controller/Menu_Item.php');
     require_once(__DIR__ . '/../controller/JSON_Structure.php');
 
-    function nav_menu_json ( $pass_menu_name ) {
+    function nav_relative_menu_json ( $pass_menu_name ) {
         
         //$menu_json_data_string = '[';
 
@@ -37,7 +37,7 @@
             foreach( $main_menu_item_array as $each_main_menu_key => $each_main_menu_item ){
 
                 $menu_level_one_obj = new JSON_Structure($each_main_menu_item);
-                $each_menu_item_string = $menu_level_one_obj->get_menu_json();
+                $each_menu_item_string = $menu_level_one_obj->get_relative_menu_json();
 
                 if ( array_key_exists($each_main_menu_key, $sub_menu_item_array) ) { //has sub menu item
                     //put each sub menu item into an array
@@ -48,7 +48,7 @@
 
                         $each_sub_menu_item_id = $each_sub_menu_item->get_object_id();
                         $menu_level_two_obj = new JSON_Structure($each_sub_menu_item);
-                        $each_sub_menu_item_string = $menu_level_two_obj->get_menu_json();
+                        $each_sub_menu_item_string = $menu_level_two_obj->get_relative_menu_json();
 
                         if ( array_key_exists($each_sub_menu_item_id, $sub_menu_item_array) ) {
                             $count_sub_sub_menu_item = count($sub_menu_item_array[$each_sub_menu_item_id]);
@@ -58,7 +58,7 @@
                             foreach( $sub_menu_item_array[$each_sub_menu_item_id] as $each_sub_sub_menu_item ) {
 
                                 $menu_level_three_obj = new JSON_Structure($each_sub_sub_menu_item);
-                                $each_sub_sub_menu_item_string = $menu_level_three_obj->get_menu_json() . '}';
+                                $each_sub_sub_menu_item_string = $menu_level_three_obj->get_relative_menu_json() . '}';
                                 $submenu_sub_item_list_array[] = $each_sub_sub_menu_item_string;
                             }
 
