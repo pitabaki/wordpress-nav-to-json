@@ -33,13 +33,13 @@ class Menu_Item
   }
 
   public function get_object(){
-    $this->object;
     return $this->object;
   }
   
   public function get_classes(){
     return $this->classes;
   }
+
 }
 
 ?>

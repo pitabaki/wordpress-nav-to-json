@@ -3,7 +3,7 @@
 	 * Plugin Name:       Anaplan Menu to JSON
 	 * Plugin URI:        https://www.anaplan.com/
 	 * Description:       Saves a JSON file of Anaplan's navigation menus
-	 * Version:           1.1.3
+	 * Version:           1.1.6
 	 * Author:            Peter Berki
 	 * Author URI:        https://kumadev.com/
 	 * License:           GPL-2.0+
@@ -22,6 +22,7 @@
 	}
 
 	function nav_relative_menu_to_json() {
+		$current_lang = get_locale();
 		$current_host = $_SERVER['HTTP_HOST'];
 		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
 			$menu_json_data_string = '[';
@@ -29,7 +30,19 @@
 			$menu_json_data_string .= "]";
 
 			//Determine file directory
-			$file = dirname(__FILE__) . '/assets/public/anaplan-dotcom-main-nav-relative.json';
+			$file = dirname(__FILE__) . "/assets/public/anaplan-dotcom-main-nav-relative_$current_lang.json";
+
+			//Print JSON content
+			file_put_contents($file, $menu_json_data_string);
+		} else {
+			$menu_json_data_string = '[';
+			$menu_json_data_string .= nav_relative_menu_json('Main Nav');
+			$menu_json_data_string .= "]";
+
+			$nav_url = $current_host . "_" . $current_lang;
+
+			//Determine file directory
+			$file = dirname(__FILE__) . "/assets/public/$nav_url.json";
 
 			//Print JSON content
 			file_put_contents($file, $menu_json_data_string);
@@ -37,6 +50,7 @@
 	}
 
 	function nav_menu_to_json() {
+		$current_lang = get_locale();
 		$current_host = $_SERVER['HTTP_HOST'];
 		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
 			$menu_json_data_string = '[';
@@ -44,7 +58,7 @@
 			$menu_json_data_string .= "]";
 
 			//Determine file directory
-			$file = dirname(__FILE__) . '/assets/public/anaplan-dotcom-main-nav.json';
+			$file = dirname(__FILE__) . "/assets/public/anaplan-dotcom-main-nav_$current_lang.json";
 
 			//Print JSON content
 			file_put_contents($file, $menu_json_data_string);
@@ -65,21 +79,27 @@
 
 		$current_host = $_SERVER['HTTP_HOST'];
 
-		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
+		$current_lang = get_locale();
 
-			$response_container = "response(%s)";
+        if ( $current_lang == 'en_US'  || $current_lang == 'en' || $current_lang == 'en_EN' ) {
 
-			$menu_json_data_string = '[';
-			$menu_json_data_string .= nav_menu_json('Main Nav');
-			$menu_json_data_string .= "]";
+			if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
 
-			$response_container_print = sprintf($response_container, $menu_json_data_string);
+				$response_container = "response(%s)";
 
-			//Determine file directory
-			$file = dirname(__FILE__) . '/assets/public/anaplan-dotcom-main-nav-jsonp.json';
+				$menu_json_data_string = '[';
+				$menu_json_data_string .= nav_menu_json('Main Nav');
+				$menu_json_data_string .= "]";
 
-			//Print JSON content
-			file_put_contents($file, $response_container_print);
+				$response_container_print = sprintf($response_container, $menu_json_data_string);
+
+				//Determine file directory
+				$file = dirname(__FILE__) . '/assets/public/anaplan-dotcom-main-nav-jsonp.json';
+
+				//Print JSON content
+				file_put_contents($file, $response_container_print);
+
+			}
 
 		}
 
