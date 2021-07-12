@@ -24,6 +24,11 @@
 	function nav_relative_menu_to_json() {
 		$current_lang = get_locale();
 		$current_host = $_SERVER['HTTP_HOST'];
+
+		if ( $_SERVER['REQUEST_URI'] == '/fr-ch/wp-admin/nav-menus.php' ) {
+			$current_lang = "fr_CH";
+		}
+
 		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
 			$menu_json_data_string = '[';
 			$menu_json_data_string .= nav_relative_menu_json('Main Nav');
@@ -52,6 +57,11 @@
 	function nav_menu_to_json() {
 		$current_lang = get_locale();
 		$current_host = $_SERVER['HTTP_HOST'];
+
+		if ( $_SERVER['REQUEST_URI'] == '/fr-ch/wp-admin/nav-menus.php' ) {
+			$current_lang = "fr_CH";
+		}
+
 		if ( $current_host == "anaplan.staging.wpengine.com" || $current_host == "anaplaninstdev.wpengine.com" ) {
 			$menu_json_data_string = '[';
 			$menu_json_data_string .= nav_menu_json('Main Nav');
